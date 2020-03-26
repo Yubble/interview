@@ -7,7 +7,6 @@ const fs = require("mz/fs");
 
 // 请求处理函数
 async function listener(req, res) {
-  console.log('监听到有请求')
   // 获取range请求头，格式为
   let range = req.headers['range'];
 
