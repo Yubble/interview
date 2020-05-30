@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>迭代器模式</title>
+</head>
+<body>
+  <script>
+    // 迭代器
+    var Iterator = function (items, container) {
+      // 获取父容器，若container参数存在，并且可以获取该元素则获取，否则获取document
+      var container = container && document.getElementById(container) || document,
+        // 获取元素
+        items = container.getElementsByTagName(items),
+        // 获取元素长度
+        length = items.length,
+        // 当前索引值，默认：0
+        index = 0;
+        // 缓存原生数组splice方法
+      var splice = [].splice;
+      return {
+        // 获取第一个元素
+        first: function() {
+          index = 0;
+          return items[index];
+        },
+        // 获取最后一个元素
+        last: function() {
+          index = length - 1;
+          return items[index];
+        },
+        // 获取前一个元素
+        pre: function() {
+          if (--index > 0) {
+            return items[index];
+          } else {
+            index = 0;
+            return null;
+          }
+        },
+        // 获取后一个元素
+        next: function() {
+          if (++index < length) {
+            return items[index];
+          } else {
+            index = length - 1;
+            return null;
+          }
+        },
+        // 获取某一个元素
+        get: function() {},
+        // 对每一个元素执行某一个方法
+        dealEach: function() {},
+        // 对某一个元素执行某一个方法
+        dealItem: function() {},
+        // 排他方式处理某一个元素
+        exclusive: function() {}
+      }
+    }
+
+
+  </script>
+</body>
+</html>
