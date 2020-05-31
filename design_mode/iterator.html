@@ -7,6 +7,12 @@
   <title>迭代器模式</title>
 </head>
 <body>
+  <ul id="container">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
   <script>
     // 迭代器
     var Iterator = function (items, container) {
@@ -50,16 +56,70 @@
           }
         },
         // 获取某一个元素
-        get: function() {},
+        get: function(num) {
+          // 如果num大于等于0再获取正向，否则逆向获取
+          index = num >= 0 ? num % length : num % length + length;
+          // 返回对应元素
+          return items[index];
+        },
         // 对每一个元素执行某一个方法
-        dealEach: function() {},
+        dealEach: function(fn) {
+          // 第二个参数开始为回调函数中参数
+          var args = splice.call(arguments, 1);
+          // 遍历元素
+          for (var i = 0; i < length; i++) {
+            // 对元素执行回调函数
+            fn.apply(items[i], args);
+          }
+        },
         // 对某一个元素执行某一个方法
-        dealItem: function() {},
+        dealItem: function(num, fn) {
+          // 对元素执行回调函数，注：
+            // 1，第三个参数开始为回调函数中参数
+            // 2, 通过this.get方法设置index索引值
+            fn.apply(this.get(num), splice.call(arguments, 2))
+        },
         // 排他方式处理某一个元素
-        exclusive: function() {}
+        exclusive: function(num, allFn, numFn) {
+          // 对所有元素执行回调函数
+          this.dealEach(allFn);
+          // 如果num类型为数组
+          if (Object.prototype.toString.call(num) === "[object Array]") {
+            // 遍历num数组
+            for (var i = 0, len = num.length; i < len; i++) {
+              // 分别处理数组中每一个元素
+              this.dealItem(num[i], numFn);
+            }
+          } else {
+            // 处理第num个元素
+            this.dealItem(num, numFn);
+          }
+        }
       }
     }
 
+    var demo = new Iterator('li', 'container')
+
+    // 从第一个元素开始，依次获取后面元素
+    console.log(demo.last())
+    console.log(demo.pre())
+    console.log(demo.first())
+    console.log(demo.next())
+
+    // 处理所有元素
+    demo.dealEach(function(text, color) {
+      this.innerHTML = text;  // 设置内容
+      this.style.background = color;  // 设置背景色
+    }, 'test', 'pink');
+
+    // 排他思想处理第3个和第4个元素
+    demo.exclusive([2,3], function() {
+      this.innerHTML = '被排除的';
+      this.style.background = 'green';
+    }, function() {
+      this.innerHTML = '选中的';
+      this.style.background = 'red';
+    })
 
   </script>
 </body>
