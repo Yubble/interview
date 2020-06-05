@@ -1,0 +1,52 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-03 10:14:58
+ * @LastEditTime: 2020-06-04 22:09:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/design_mode/link.html
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="demo">a</div>
+  <div id="test">b</div>
+  <script>
+    var A = function(selector) {
+      return new A.fn.init(selector)
+    }
+    // A.fn = A.prototype = {
+    A.fn = {
+      constructor: A,
+      init: function(selector) {
+        this[0] = document.getElementById(selector)
+        this.length = 1
+        return this
+      },
+      length: 2,
+      size() {
+        return this.length
+      }
+    }
+    A.fn.init.prototype = A.fn
+
+    var demo = A('demo')
+    console.log('demo is ', demo)
+
+    // var jqdemo = $('#demo')
+    // console.log('jqdemo is ', jqdemo)
+    // console.log('size is ', demo.size())
+
+    // var test = A('test')
+    // console.log('test is ', test)
+    // console.log('size is ', test.size())
+  </script>
+</body>
+</html>
