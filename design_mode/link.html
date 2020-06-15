@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-03 10:14:58
- * @LastEditTime: 2020-06-10 22:08:56
+ * @LastEditTime: 2020-06-12 14:53:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /interviews/interview/design_mode/link.html
@@ -16,8 +16,11 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="demo">a</div>
-  <div id="test">b</div>
+  <div id="demo">id 为 demo</div>
+  <div id="test">id 为 test</div>
+  <div> div1 </div>
+  <div> div2 </div>
+  <p> 段落样式p </p>
   <script>
     var A = function(selector, context) {
       return new A.fn.init(selector, context)
@@ -44,7 +47,6 @@
             len = doms.length;
           for (; i < len; i++) {
             // 压入this中
-            console.log('i is ', i)
             this[i] = doms[i]
           }
           // 矫正长度
@@ -77,7 +79,6 @@
       // 如果只传一个参数
       if (i == len) {
         // 源对象为当前对象
-        console.log('this is ', this)
         target = this
         // i 从 0 计数
         i--
@@ -94,20 +95,12 @@
       return target
     }
 
-    var divs = A('div') // 搜索所有div
-    var demo = A('#demo') // 搜索所有demo
-    console.log('采集所有的div :', divs)
-    console.log('采集的id为demo :', demo)
-
     // 拓展一个对象
     var extendObj = A.extend({first: 1}, {second: 2}, {third: 3})
-    console.log('拓展对象 :', extendObj)
     // 拓展A.fn方式一
     A.extend(A.fn, {version: '1.0'});
-    console.log('拓展一 ~ demo的版本是 :', A('demo').version)
     // 拓展A.fn方式二
     A.fn.extend({ getVersion: function() {return this.version} })
-    console.log('拓展二 ~ demo的版本是 :', A('demo').getVersion())
 
     A.fn.extend({
       // 添加事件
@@ -156,7 +149,7 @@
       }
     })
 
-    A.extend({
+    A.fn.extend({
       // 设置css样式
       css: function() {
         var arg = arguments,
@@ -164,6 +157,7 @@
         if (this.length < 1) {
           return this
         }
+        console.log('arg is ', arg)
         // 只有一个参数时
         if (len === 1) {
           // 如果为字符串则为获取第一个元素css样式
@@ -175,14 +169,14 @@
               return getComputedStyle(this[0], false)[name]
             }
           }
-        }
-        // 为对象时则设置多个样式
-        else if (typeof arg[0] === 'object') {
-          for (var i in arg[0]) {
-            // 遍历每个样式
-            for (var j = this.length - 1; j >= 0; j--) {
-              // 调用拓展方法camelCase将'-'分割线转化为驼峰式
-              this[j].style[A.camelCass(i)] = arg[0][i]
+          // 为对象时则设置多个样式
+          else if (typeof arg[0] === 'object') {
+            for (var i in arg[0]) {
+              // 遍历每个样式
+              for (var j = this.length - 1; j >= 0; j--) {
+                // 调用拓展方法camelCase将'-'分割线转化为驼峰式
+                this[j].style[A.camelCase(i)] = arg[0][i]
+              }
             }
           }
         }
@@ -192,8 +186,73 @@
             this[j].style[A.camelCase(arg[0])] = arg
           }
         }
+        return this
       }
     })
+
+    A.fn.extend({
+      // 设置属性
+      attr: function() {
+        var arg = arguments,
+            len = arg.length
+        if (this.length < 1) {
+          return this
+        }
+        // 如果一个参数
+        if (len === 1) {
+          // 为字符串则获取第一个元素属性
+          if (typeof arg[0] === 'string') {
+            return this[0].getAttribute(arg[0])
+          } else if (typeof arg[0] === 'object') {
+            for (var i in arg[0]) {
+              for (var j = this.length - 1; j >= 0; j--) {
+                this[i].setAttribute(i, arg[0][i])
+              }
+            }
+          }
+        }
+        // 两个参数则设置每个元素单个属性
+        else if (len === 2) {
+          for (var j = this.length - 1; j >= 0; j--) {
+            this[j].setAttribute(arg[0], arg[1])
+          }
+        }
+        return this
+      }
+    })
+
+    A.fn.extend({
+      // 获取或者设置元素的内容
+      html: function() {
+        var arg = arguments,
+            len = arg.length
+        // 无参数则获取第一个元素的内容
+        if (len === 0) {
+          return this[0] && this[0].innerHTML
+        }
+        // 一个参数则设置每一个元素的内容
+        else {
+          for (var i = this.length - 1; i >= 0; i--) {
+            this[i].innerHTML = arg[0]
+          }
+        }
+        return this
+      }
+    })
+
+    var divs = A('div') // 搜索所有div
+    divs
+    .css({
+      height: '30px',
+      border: '1px solid #000',
+      'background-color': 'red'
+    })
+    .attr('class', 'dmclass')
+    .on('click', function() {
+      console.log('clicked')
+    })
+
+    // var demo = A('#demo') // 搜索所有demo
   </script>
 </body>
 </html>
