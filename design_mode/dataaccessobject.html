@@ -1,7 +1,7 @@
 <!--
  * @Author: liuyanbao
  * @Date: 2020-06-12 15:03:58
- * @LastEditTime: 2020-06-12 17:44:09
+ * @LastEditTime: 2020-06-15 16:24:52
  * @LastEditors: Please set LastEditors
  * @Description: 保存一个前端本地缓存的类
  * @FilePath: /interviews/interview/design_mode/dataaccessobject.html
@@ -60,6 +60,8 @@
         }
         // 有回调函数则执行回调函数并传入参数操作状态，真实数据字段标识以及存储数据值
         callback && callback.call(this, status, key, value)
+        // 如果使用箭头函数的话应改成ctx，箭头函数并无法使用.call
+        // callback(status, key, value)
       },
       // 获取操作
       get: function(key, callback) {
@@ -121,6 +123,7 @@
         }
         // 执行回调函数
         callback && callback.call(this, result.status, result.value)
+        // callback(result.status, result.value)
         // 返回结果
         return result
       },
@@ -152,7 +155,18 @@
 
     var LS = new BaseLocalStorage('LS__')
     LS.set('a', 'xiao ming', function() {console.log(arguments)})
-    LS.get('a', function() {console.log(arguments)})
+    LS.get('a', function() {
+      console.log('this is ', this)
+      console.log(arguments)
+    })
+
+    LS.set('b', 'xiao Y', (...rest) => {
+      // 使用箭头函数则无法使用.call获取当前this
+      console.log(rest)
+    })
+    LS.get('b', () => {
+      console.log(this)
+    })
   </script>
 </body>
 </html>
