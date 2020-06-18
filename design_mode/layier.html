@@ -1,0 +1,65 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-16 17:27:52
+ * @LastEditTime: 2020-06-16 20:01:39
+ * @LastEditors: Please set LastEditors
+ * @Description: 惰性模式，在代码第一次加载的时候将所有浏览器或者环境判断都完成并记录好，使得无需再每次调用方法时重新判断
+ * @FilePath: /interviews/interview/design_mode/layier.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const A = {}
+    A.on = function(dom, type, fn) {
+      // 如果支持addEventListener方法
+      if (document.addEventListener) {
+        // 显示重定义on方法
+        A.on = function(dom, type, fn) {
+          dom.addEventListener(type, fn, false)
+        }
+      // 如果支持attachEvent方法
+      } else if (document.attachEvent) {
+        // 显示重定义on方法
+        A.on = function(dom, type, fn) {
+          dom.attachEvent('on' + type, fn)
+        }
+      // 如果支持DOM0级事件绑定
+      } else {
+        // 显示重定义on方法
+        A.on = function(dom, type, fn) {
+          dom['on' + type] = fn
+        }
+      }
+      // 执行重定义on方法
+      A.on(dom, type, fn)
+    }
+
+    A.on = function(dom, type, fn) {
+      // 如果支持addEventListener方法
+      if (document.addEventListener) {
+        // 返回新定义方法
+        return function(dom, type, fn) {
+          dom.addEventListener(type, fn, false)
+        }
+      // 如果支持attachEvent方法
+      } else if (document.attachEvent) {
+        // 显示重定义on方法
+        return function(dom, type, fn) {
+          dom.attachEvent('on' + type, fn)
+        }
+      // 如果支持DOM0级事件绑定
+      } else {
+        return function(dom, type, fn) {
+          dom['on' + type] = fn
+        }
+      }
+    }
+  </script>
+</body>
+</html>
