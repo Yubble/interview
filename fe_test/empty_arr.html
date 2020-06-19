@@ -1,0 +1,25 @@
+<!--
+ * @Author: liuyanbao
+ * @Date: 2020-06-18 21:47:18
+ * @LastEditTime: 2020-06-18 21:49:15
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/empty_arr.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const arr = [,3,,4,5]
+    const result = arr.map(i => ++i)
+    console.log('result is ', result)
+    console.log('1 is ', result[0])
+  </script>
+</body>
+</html>

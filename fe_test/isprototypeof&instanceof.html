@@ -1,0 +1,33 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-19 16:55:51
+ * @LastEditTime: 2020-06-19 17:18:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/isprototypeof&instanceof.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // isPrototypeOf
+    const p = {x:1}
+    const o = Object.create(p)
+    const pisProto = p.isPrototypeOf(o)
+    console.log('p 是 o 的原型：', pisProto)
+    const OisProtop = Object.prototype.isPrototypeOf(p)
+    console.log('Object 是 p 的原型：', OisProtop)
+
+    // instanceof
+    const d = new Date()
+    const dresult = d instanceof Date
+    console.log('d 是否是 Date 的实例：', dresult)
+  </script>
+</body>
+</html>
