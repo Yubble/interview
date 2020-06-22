@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-22 16:19:44
+ * @LastEditTime: 2020-06-22 21:56:16
+ * @LastEditors: Please set LastEditors
+ * @Description: 冒泡排序
+ * @FilePath: /interviews/interview/arithmetic/pop.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const swap = (array, index1, index2) => {
+      [array[index1], array[index2]] = [array[index2], array[index1]]
+    }
+
+    Array.prototype.bubbleSort = function() {
+      const length = this.length
+      for (let i=0; i < length; i++) {
+        for (let j=0; j < length; j++) {
+          if (this[j] > this[j+1]) {
+            swap(this, j, j+1)
+          }
+        }
+      }
+      return this
+    }
+
+    const arr1 = [2, 4, 3, 1, 8, 6].bubbleSort()
+    console.log(arr1)
+  </script>
+</body>
+</html>
