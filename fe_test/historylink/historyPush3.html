@@ -1,0 +1,33 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-19 22:46:59
+ * @LastEditTime: 2020-06-20 10:45:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/historyPush3.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    history3
+    <button id="btn1">跳回上上页</button>
+  </div>
+  <script>
+    // window.addEventListener('popstate', event => {
+    //   console.log('state3: ', JSON.stringify(event.state))
+    // })
+
+    const btn1 = document.getElementById('btn1')
+    btn1.onclick = () => {
+      history.back()
+    }
+  </script>
+</body>
+</html>

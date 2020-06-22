@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-19 20:26:26
+ * @LastEditTime: 2020-06-22 10:39:36
+ * @LastEditors: Please set LastEditors
+ * @Description: 模拟popstate监听，需要加上配套ng，不然无法使用pushState跳转
+ * @FilePath: /interviews/interview/fe_test/historyPup.html
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn1">push跳转按钮</button>
+  <button id="btn2">location普通跳转</button>
+  <script>
+    // window.addEventListener('popstate', event => {
+    //   console.log('state1: ', JSON.stringify(event.state))
+    // })
+
+    const btn1 = document.getElementById('btn1')
+    btn1.onclick = () => {
+      window.history.pushState({
+        path: 'history1',
+        spe: 'ux'
+      }, "page2", 'historyPush2.html')
+    }
+
+    const btn2 = document.getElementById('btn2')
+    btn2.onclick = () => {
+      window.location.href = 'http://test.history.com/historyPush3.html'
+    }
+  </script>
+</body>
+</html>

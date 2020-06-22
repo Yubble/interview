@@ -1,0 +1,41 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-19 22:00:11
+ * @LastEditTime: 2020-06-19 22:49:03
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/historyPush2.html
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    historyPush 2
+    <button id="btn">进入下一页</button>
+    <button id="btn1">跳回上一页</button>
+  </div>
+  <script>
+    window.addEventListener('popstate', event => {
+      console.log('state2: ', JSON.stringify(event.state))
+    })
+
+    const btn = document.getElementById('btn')
+    btn.onclick = () => {
+      window.history.pushState({
+        path: 'history2'
+      }, "", 'historyPush3.html')
+    }
+    
+    const btn1 = document.getElementById('btn1')
+    btn1.onclick = () => {
+      window.back()
+    }
+  </script>
+</body>
+</html>
