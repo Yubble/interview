@@ -1,0 +1,36 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-23 20:25:40
+ * @LastEditTime: 2020-06-23 20:28:31
+ * @LastEditors: Please set LastEditors
+ * @Description: 时间复杂度与空间复杂度
+ * @FilePath: /interviews/interview/arithmetic/complexity.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function factorial (n) {
+      var s = 0,
+        temp = 1
+      for (var i = 1; i <= n; i++) {
+        temp = 1
+        for (var j = 1; j <= i; j++) {
+            temp *= j
+        }
+        s += temp
+      }
+      return s
+    }
+
+    // 阶乘的和
+    console.log(factorial(2))
+  </script>
+</body>
+</html>
