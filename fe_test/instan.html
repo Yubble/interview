@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-29 20:05:53
+ * @LastEditTime: 2020-06-30 12:51:03
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/instan.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Foo() {}
+
+    function Bar() {}
+    Bar.prototype = Object.create(Foo.prototype)
+    Bar.prototype.constructor = Bar
+
+    function Baz() {}
+    Baz.prototype = Object.create(Bar.prototype)
+    Baz.prototype.constructor = Baz
+
+    class A {}
+
+    class B extends A {}
+
+    function instance_of(a, B) {
+      const B_proto = B.prototype
+      a = a.__proto__
+      while (true) {
+        if (a === null) return false;
+        if (a === B_proto) return true;
+        a = a.__proto__
+      }
+    }
+
+    // console.log('B _proto_ is ', B.__proto__)
+    // console.log(`Baz _proto_ is ${Bar.__proto__}`)
+    const b1 = new Bar()
+    const b2 = new Baz()
+    // console.log('b1 instance is ', instance_of(b1, Bar))  // true Bar的原型在b1的原型链中
+    console.log('B.__proto__ is ', B.__proto__)
+    console.log('B.prototype is ', B.prototype)
+    console.log('B.__proto__ = A ', B.__proto__ === A)
+    console.log('B.prototype.__proto__ = A.prototype ', B.prototype.__proto__ === A.prototype)
+    console.log('A ispro B ', A.isPrototypeOf(B))
+    console.log('Baz.__proto__ is ', Baz.__proto__)
+    console.log('Baz.prototype is ', Baz.prototype)
+    console.log('Baz.__proto__ = Bar ', Baz.__proto__ === Bar)
+    console.log('Baz.prototype.__proto__ = Bar.prototype', Baz.prototype.__proto__ === Bar.prototype)
+    console.log('Bar ispro Baz ', Bar.isPrototypeOf(Baz))
+    console.log('b1 instance is ', b1 instanceof Bar)
+    console.log('b1 prototype is ', Bar.prototype.isPrototypeOf(b1))  // true b1的原型链_proto_属于Bar的原型
+    console.log('b2 instance is ', b2 instanceof Bar)
+    console.log('b2 prototype is ', Bar.prototype.isPrototypeOf(b2))
+
+    // 结论，其实两种方法都是在查找一个对象是否在另一个对象的原型链上
+    // 只不过 A isPrototypeOf(B) 是查找A这个对象（一般就是prototype）是否在B的上层原型链中 B.__proto__
+    // 而 A instanceof B 表示的是A的原型链 __proto__ 甚至更上层的 __proto__ 中包含B这个类的原型 prototype
+  </script>
+</body>
+</html>

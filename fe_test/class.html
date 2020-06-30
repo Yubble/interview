@@ -1,0 +1,35 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-29 21:02:38
+ * @LastEditTime: 2020-06-29 21:25:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/class.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function baseA () {}
+    baseA.prototype.soso = () => console.log('say hoho')
+    
+    class Arr1 extends baseA {}
+
+    function Arr2 () {}
+    Arr2.prototype = Object.create(baseA.prototype)
+
+    const a1 = new Arr1()
+    // console.log('a1 len is ', a1.soso())
+    console.log('a1 pro is ', a1.prototype)
+    const a2 = new Arr2()
+    // console.log('a2 is ', a2)
+    console.log('a2 pro is ', a2.prototype)
+    // console.log('a2 len is ', a2.soso())
+  </script>
+</body>
+</html>

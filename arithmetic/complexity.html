@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-23 20:25:40
- * @LastEditTime: 2020-06-28 19:20:51
+ * @LastEditTime: 2020-06-29 11:06:42
  * @LastEditors: Please set LastEditors
  * @Description: 时间复杂度与空间复杂度
  https://www.cnblogs.com/GarfieldEr007/p/12251700.html
@@ -36,22 +36,8 @@
      * 这行代码的时间增长趋势是根据n的变化而变化的，所以他的复杂度就是O(n)
     */
 
-    // 循环累加
-    function total3 (n) {
-      var sum = 0;  // t
-      for (var i = 0; i < n; i++) { // tn 循环次数乘以n
-        sum += i;   // tn
-      }
-      return sum  // t
-    }
-    /*
-     * 2t + 2tn = 2t(1+n)
-     * 取最大量级就是O(n)
-     */
-    // console.log('total3 is ', total3(4))
-
     // 新循环累加
-    function total4 (n) {
+    function total3 (n) {
       var sum = 0;  // t
       for (var i = 0; i < n; i++) {   // tn
         for (var j = 0; j < n; j++) { // t*n*n  循环次数乘以n的平方
@@ -64,10 +50,10 @@
      * 2t + tn + 2tnn = t(2 + n + 2(n^2))
      * 取最大量级是O(n^2)
      */
-    // console.log('total4 is ', total4(4))
+    // console.log('total3 is ', total3(4))
 
     // 记录log的循环方式
-    function log1(n) {
+    function total4 (n) {
       var sum = 0;
       var i = 1;
       while (i <= n) {  // 循环次数为 2^x = n
@@ -81,7 +67,9 @@
      * 所以这次的时间复杂度为 O(logn)
      * 这个表达是不需要底数的，因为在算法看来，当n趋于无限大的时候，底数是多少都不重要
      */
-    log1(18)
+    //  total4(18)
+
+    // 通过变量的变化
   </script>
 </body>
 </html>

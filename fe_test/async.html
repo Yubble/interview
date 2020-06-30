@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-29 17:33:30
+ * @LastEditTime: 2020-06-29 17:33:46
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/async.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log(1);
+    async function async1(){
+      console.log(2);
+      await console.log(3);
+      console.log(4);
+    }
+    setTimeout(function(){
+      console.log(5)
+    },0)
+    async1();
+    new Promise(function(resolve){
+      console.log(6);
+      resolve();
+      console.log(9);
+    }).then(function(){
+      console.log(7);
+    });
+    console.log(8);
+  </script>
+</body>
+</html>

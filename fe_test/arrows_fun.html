@@ -1,0 +1,54 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-29 11:31:29
+ * @LastEditTime: 2020-06-29 21:18:08
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/arrows_fun.html
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var x = 11;
+    const obb = {
+      x: 222,
+      y: {
+        x:333,
+        obc: function f() {
+          console.log(this)
+          var x = 111;
+          var obj = {
+            x: 22,
+            say: () => {
+              console.log(this.x);
+            }
+          }
+          obj.say()
+        },
+        odd: () => {
+          console.log(this.x)
+        }
+      }
+    }
+    // obb.y.obc()
+
+    const arrow2 = () => {
+      this.a = 112
+      this.fun = () => {
+        console.log('a is ', this.a)
+      }
+    }
+
+    // const a = new arrow2()
+    const newo = obb.y.odd
+    newo()
+  </script>
+</body>
+</html>
