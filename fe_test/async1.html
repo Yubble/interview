@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-29 18:27:04
- * @LastEditTime: 2020-06-29 18:30:38
+ * @LastEditTime: 2020-07-01 18:27:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /interviews/interview/fe_test/async1.html
@@ -15,10 +15,20 @@
 </head>
 <body>
   <script>
+    function settime() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('settimeout done')
+          resolve(4)
+        }, 2000)
+      })
+    }
     async function async1(){
       // 2
         console.log('async1 start')
         await async2()
+        const timeres = await settime()
+        console.log('timer is ', timeres)
         // 6
         console.log('async1 end')
     }

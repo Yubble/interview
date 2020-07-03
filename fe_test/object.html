@@ -1,0 +1,33 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-03 18:32:02
+ * @LastEditTime: 2020-07-03 18:38:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/object.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const o = {
+      n: 23,
+      say: () => {
+        console.log('o is ', o.n)
+      }
+    }
+
+    Object.prototype.a = 'a'
+    Function.prototype.b = 'b'
+
+    console.log('a is ', o.a)
+    console.log('b is ', o.b)
+  </script>
+</body>
+</html>

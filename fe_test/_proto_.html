@@ -1,0 +1,31 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-07-01 12:10:09
+ * @LastEditTime: 2020-07-01 13:54:56
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /interviews/interview/fe_test/_proto_.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const arr_proto_ = Array.__proto__
+    console.log('arr_proto_ is ', arr_proto_)
+    console.log('array is ', Array)
+    // Array这种js自带类是可以有__proto__的
+
+    function fun1 () {}
+    console.log('fun1 _proto_ is ', fun1.__proto__ === Object.prototype)
+
+    const fun1Pro = Object.getPrototypeOf(fun1)
+    console.log('fun1Pro is ', fun1Pro)
+  </script>
+</body>
+</html>
