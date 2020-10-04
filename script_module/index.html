@@ -1,0 +1,24 @@
+<!DOCTYPE html>`
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./ordinary.js"></script>
+    <script type="module" src="./model1.mjs"></script>
+    <script nomodule src="./nomodel.js"></script>
+</head>
+<body>
+    本测试需要依赖本地轻量服务器，请全局安装 http-server
+    测试mjs主页面
+    <!-- <script type="module">
+        import m1 from './model1.mjs'
+        console.log('m1 is ', m1)
+    </script> -->
+    <script type="module">
+        import { modelTemp } from './model2.mjs'
+
+        console.log('modelTemp is ', modelTemp)
+    </script>
+</body>
+</html>
