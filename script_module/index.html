@@ -1,3 +1,9 @@
+<!--
+ * @Name: 
+ * @Description: 
+ * @Author: 刘燕保
+ * @Date: 2020-10-10 19:26:54
+-->
 <!DOCTYPE html>`
 <html lang="en">
 <head>
@@ -16,9 +22,22 @@
         console.log('m1 is ', m1)
     </script> -->
     <script type="module">
-        import { modelTemp } from './model2.mjs'
+      import { modelTemp, modelCon } from './model2.mjs'
+
+      console.log('modelTemp is ', modelTemp)
+      modelCon()
+    </script>
+    <!-- <script type="module">
+      const flag = true
+      if (flag) {
+        import m1 from './model1.mjs'
+        console.log('m1 is ', m1)
+      } else {
+        import { modelTemp, modelCon } from './model2.mjs'
 
         console.log('modelTemp is ', modelTemp)
-    </script>
+        modelCon()
+      }
+    </script> -->
 </body>
 </html>
