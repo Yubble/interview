@@ -1,0 +1,36 @@
+<!--
+ * @Name: 
+ * @Description: 
+ * @Author: 刘燕保
+ * @Date: 2020-10-22 15:00:02
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const testFun = () => {
+      const randomNo = Math.ceil(Math.random() * 10)
+      setTimeout(() => {
+        if (randomNo % 2) {
+          return Promise.resolve('回结成功')
+        } else {
+          return Promise.reject('返回失败')
+        }
+      }, 1000)
+    }
+
+    testFun()
+    .then(data => {
+      console.log('data is ', data)
+    })
+    .catch(err => {
+      console.log('err is ', err)
+    })
+  </script>
+</body>
+</html>
