@@ -1,0 +1,27 @@
+<!--
+ * @Name: 
+ * @Description: 
+ * @Author: 刘燕保
+ * @Date: 2020-11-13 19:00:32
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    window.addEventListener('error', err => {
+      console.log('错误捕获', err)
+    })
+
+    try {
+      window.sdfo()
+    } catch (err) {
+      console.error(err)
+    }
+  </script>
+</body>
+</html>
