@@ -14,9 +14,9 @@ const server = net.createServer(function (socket) {
     nickname: '匿名',
     socket
   }
-  server.getConnections((err, connect) => {
+  server.getConnections((err, count) => {
     console.log('获得链接')
-    socket.write(`你好，当前在线用户${connect}人\r\n`)
+    socket.write(`你好，当前在线用户${count}人\r\n`)
   })
   socket.setEncoding('utf-8')
   socket.on('data', function (data) {
@@ -80,7 +80,9 @@ const server = net.createServer(function (socket) {
 server.listen(8080, function () {
   console.log('服务器已经启动！！！')
 })
-
+server.on('connection', socket => {
+  console.log('有链接啦，ip is ', socket.remoteAddress + ':' + socket.remotePort)
+})
 server.on('close', function () {
   console.log('服务器已经关闭')
 })
