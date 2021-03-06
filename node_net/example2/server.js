@@ -16,7 +16,9 @@ server.on('listening', function () {
 })
 
 server.on('connection', function (socket) {
-  console.log('有新的链接！')
+  console.log('有新的链接！ip is ',
+    socket.remoteAddress + ':' + socket.remotePort
+  )
 
   socket.on('data', function (data) {
     console.log(data.toString())

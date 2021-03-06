@@ -8,8 +8,8 @@
 const net = require('net')
 let users = {}
 const server = net.createServer(function (socket) {
-  console.log('访问用户为', socket)
-  const id = socket.remoteAddress + socket.remotePort;
+  const id = socket.remoteAddress + ':' + socket.remotePort;
+  console.log('id is ', id)
   users[id] = {
     nickname: '匿名',
     socket
