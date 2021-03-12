@@ -1,0 +1,41 @@
+<!--
+ * @Name: 
+ * @Description: 
+ * @Author: 刘燕保
+ * @Date: 2021-03-10 22:00:59
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // const urlStr = 'http://www.fapiao.com/dzfp-web/pdf/download?request=6e7JGm38jfjghVrv4ILd-kEn64HcUX4qL4a4qJ4-CHLmqVnenXC692m74H5oxkjgdsYazxcUmfcOH2fAfY1Vw__%5EDadIfJgiEf';
+    const urlStr = 'http://www.fapiao.com/dzfp-web/download?request=6e7JGm38jfjghVrv4ILd-kEn64HcUX4qL4a4qJ4-CHLmqVnenXC692m74H5oxkjgdsYazxcUmfcOH2fAfY1Vw_';
+    // const reg = new RegExp('^([hH][tT]{2}[pP]://|[hH][tT]{2}[pP][sS]://)(([A-Za-z0-9-~]+).)+?([A-Za-z0-9-~_%\\\\/])+$')
+    // const reg = new RegExp('^([hH][tT]{2}[pP]://|[hH][tT]{2}[pP][sS]://)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\\/])+$')
+    const reg = new RegExp(/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~_%\\\\/])+$/)
+
+    /*
+     *  第一部分：校验协议 ^([hH][tT]{2}[pP]://|[hH][tT]{2}[pP][sS]://)
+     *  第二部分：校验域名 (([A-Za-z0-9-~]+).)+
+     *  第三部分：校验参数 ([A-Za-z0-9-~_%\\\\/])+$
+    */
+
+    /*
+     * 
+     * 主要是_造成了长途跋涉的回溯
+     * 
+     */
+
+    const val = reg.test(urlStr)
+    // const matVal = urlStr.match(reg)
+
+    console.log('val is ', val)
+  </script>
+</body>
+</html>

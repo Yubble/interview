@@ -1,0 +1,41 @@
+<!--
+ * @Name: 
+ * @Description: 测试正则表达式
+ * @Author: 刘燕保
+ * @Date: 2021-03-10 11:35:01
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // const str = '1111a'
+    // const reg = new RegExp(/[\d,a]++a/)
+
+    // const val = reg.test(str)
+    // console.log('val is ', val)
+
+    // const matVal = str.match(reg)
+    // console.log('matVal is ', matVal)
+
+    // const str = 'abbc'
+    // const reg = new RegExp(/ab{1,3}+bc/)
+
+    // const matVal1 = str.match(reg)
+    // console.log('matVal1 is ', matVal1)
+
+    const reg = new RegExp(/(([A-Za-z0-9-~]+).)+/)
+    const urlStr = 'com/dzfp-web/download?request=6e7JGm38jfjghVrv4ILd-kEn64HcUX4qL4a4qJ4-CHLmqVnenXC692m74H5oxkjgdsYazxcUmfcOH2fAfY1Vw_'
+
+    const res = reg.test(urlStr)
+    console.log('res is ', res)
+
+  </script>
+</body>
+</html>

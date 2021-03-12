@@ -1,0 +1,49 @@
+<!--
+ * @Name: 
+ * @Description: 真实项目中出现过的正则回溯问题
+ * @Author: 刘燕保
+ * @Date: 2021-03-09 21:43:51
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const urlStr = 'https://www.shuidihuzhu.com/sd/respond-recharge?group=1&tradeNo=2288d31e20c848f1a12620774e991728&channel=recharge_menu&toMessageBoxChannel=false&orderId=909952744,909952712,909951792,909952713,909952788,909952774,909952787,909951821,909952743,909951759,909951835,909952773,909951791,909951760'
+
+    // const reg = new RegExp(/^(((http|https):)?\/\/)(([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+([A-Za-z]+)[/\?\:]?.*$/)
+    // const reg = new RegExp('^(((http|https):)?\/\/)(([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+([A-Za-z]+)[/\?\:]?.*$')
+    // const reg = new RegExp('^(((http|https):)?\/\/)(([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+([A-Za-z0-9]+)$')
+    // const reg = new RegExp(/^(((http|https):)?\/\/)(([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+([A-Za-z]+)[/\?\:]?.*$/)
+
+    /*
+     *  第一部分：检验协议 ^(((http|https):)?\/\/)
+     *  第二部分：校验域名 (([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+
+     *  第三部分：校验参数 ([A-Za-z]+)[/\?\:]?.*$
+    */
+
+    // console.log('urlStr is ', urlStr)
+    // const val = reg.test(urlStr)
+    // const val = urlStr.match(reg)
+    // console.log('val is ', val)
+
+    // const mat = urlStr.match(reg)
+    // console.log('mat is ', mat)
+
+    const str = 'www.shuidihuzhu.com/sd/respond-recharge?group=14s'
+    // const regs = new RegExp('(([A-Za-z0-9]+-[A-Za-z0-9]+|[A-Za-z0-9]+)\.)+([A-Za-z]+)[/\?\:]?.*')
+    const regs = new RegExp('(([0-9]+)\.)+([A-Za-z]+).*')
+    // const str = '242453243,42423431,909952773,909951791,909951760'
+    // const regs = new RegExp('(\.)+')
+    // const val1 = regs.test(str)
+    const val1 = str.match(regs)
+    console.log('少量匹配是否通过', val1)
+  </script>
+</body>
+</html>
